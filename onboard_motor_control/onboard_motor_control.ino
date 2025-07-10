@@ -24,6 +24,7 @@ void setup() {
 }
 
 void loop() {
+
 	directionControl();
 	delay(1000);
 	speedControl();

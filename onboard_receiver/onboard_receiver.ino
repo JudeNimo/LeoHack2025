@@ -11,10 +11,9 @@ WiFiServer server(8080);  // TCP server on port 8080
 
 void setup() { 
   Serial.begin(9600); //initialising serial connection
-  while (!Serial);
+  //while (!Serial);
 
   Serial.println("Creating an access point...");
-
 
   status = WiFi.beginAP(ssid, pass); //setting up the AP
   if (status != WL_AP_LISTENING){
@@ -67,6 +66,111 @@ void loop() {
           int ipower = power - '0';
 
           go_forward(ipower, itime);
+        }
+
+        if (c == 'b') {
+          //MOVE BACKWARDS
+          //expecting a format of '[power (0-9)] [time (0-9)]'
+          char space1 = client.read(); //empty space read
+          char power = client.read();
+          char space2 = client.read(); //empty space read
+          char time = client.read();
+
+          String outputmessage = "Going backwards at power and time: ";
+          outputmessage += power;
+          outputmessage += ' ';
+          outputmessage += time;
+          Serial.println(outputmessage);
+
+          //converting the chars to ints
+          int itime = time - '0';
+          int ipower = power - '0';
+
+          go_backward(ipower, itime);
+        }
+
+        if (c == 'l') {
+          //ROTATE LEFT
+          //expecting a format of '[power (0-9)] [time (0-9)]'
+          char space1 = client.read(); //empty space read
+          char power = client.read();
+          char space2 = client.read(); //empty space read
+          char time = client.read();
+
+          String outputmessage = "Going left at power and time: ";
+          outputmessage += power;
+          outputmessage += ' ';
+          outputmessage += time;
+          Serial.println(outputmessage);
+
+          //converting the chars to ints
+          int itime = time - '0';
+          int ipower = power - '0';
+
+          turn_left(ipower, itime);
+        }
+
+        if (c == 'r') {
+          //ROTATE RIGHT
+          //expecting a format of '[power (0-9)] [time (0-9)]'
+          char space1 = client.read(); //empty space read
+          char power = client.read();
+          char space2 = client.read(); //empty space read
+          char time = client.read();
+
+          String outputmessage = "Going left at power and time: ";
+          outputmessage += power;
+          outputmessage += ' ';
+          outputmessage += time;
+          Serial.println(outputmessage);
+
+          //converting the chars to ints
+          int itime = time - '0';
+          int ipower = power - '0';
+
+          turn_right(ipower, itime);
+        }
+
+        if (c == 'a') {
+          //TRANSLATE LEFT
+          //expecting a format of '[power (0-9)] [time (0-9)]'
+          char space1 = client.read(); //empty space read
+          char power = client.read();
+          char space2 = client.read(); //empty space read
+          char time = client.read();
+
+          String outputmessage = "Going left at power and time: ";
+          outputmessage += power;
+          outputmessage += ' ';
+          outputmessage += time;
+          Serial.println(outputmessage);
+
+          //converting the chars to ints
+          int itime = time - '0';
+          int ipower = power - '0';
+
+          translate_left(ipower, itime);
+        }
+
+        if (c == 'd') {
+          //TRANSLATE RIGHT
+          //expecting a format of '[power (0-9)] [time (0-9)]'
+          char space1 = client.read(); //empty space read
+          char power = client.read();
+          char space2 = client.read(); //empty space read
+          char time = client.read();
+
+          String outputmessage = "Going left at power and time: ";
+          outputmessage += power;
+          outputmessage += ' ';
+          outputmessage += time;
+          Serial.println(outputmessage);
+
+          //converting the chars to ints
+          int itime = time - '0';
+          int ipower = power - '0';
+
+          translate_right(ipower, itime);
         }
 
         client.write(c);         // Echo back to client
