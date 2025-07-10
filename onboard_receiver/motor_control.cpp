@@ -56,6 +56,19 @@ void go_forward(int power, int time) {
   digitalWrite(Mot3_hbridge_2, LOW);
 }
 
+void stop(){
+  analogWrite(Mot1_pwm, 0);
+  analogWrite(Mot2_pwm, 0);
+  analogWrite(Mot3_pwm, 0);
+  digitalWrite(Mot1_hbridge_1, LOW);
+  digitalWrite(Mot1_hbridge_2, LOW);
+  digitalWrite(Mot2_hbridge_1, LOW);
+  digitalWrite(Mot2_hbridge_2, LOW);
+  digitalWrite(Mot3_hbridge_1, LOW);
+  digitalWrite(Mot3_hbridge_2, LOW);
+
+}
+
 void go_backward(int power, int time) {
   int desired_speed = (power * global_max_speed) / 9;
 

@@ -46,6 +46,8 @@ void loop() {
         if (c == 's') {
           //STOP
           // call the stop function here
+          stop();
+          Serial.println("Motors Stopped");
         }
         if (c == 'f') {
           //MOVE FORWARD
@@ -97,7 +99,7 @@ void loop() {
           char space2 = client.read(); //empty space read
           char time = client.read();
 
-          String outputmessage = "Going left at power and time: ";
+          String outputmessage = "Rotating left at power and time: ";
           outputmessage += power;
           outputmessage += ' ';
           outputmessage += time;
@@ -118,7 +120,7 @@ void loop() {
           char space2 = client.read(); //empty space read
           char time = client.read();
 
-          String outputmessage = "Going left at power and time: ";
+          String outputmessage = "Rotating right at power and time: ";
           outputmessage += power;
           outputmessage += ' ';
           outputmessage += time;
@@ -160,7 +162,7 @@ void loop() {
           char space2 = client.read(); //empty space read
           char time = client.read();
 
-          String outputmessage = "Going left at power and time: ";
+          String outputmessage = "Going right at power and time: ";
           outputmessage += power;
           outputmessage += ' ';
           outputmessage += time;
