@@ -5,7 +5,6 @@ from datetime import datetime, timedelta
 
 ARUINO_IP = "192.168.4.1"
 ARUINO_PORT = 8080
-
 # Default values setup
 power = 5
 duration = 1
