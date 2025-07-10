@@ -7,7 +7,7 @@ try:
     s.connect(("192.168.4.1", 8080))
     print("Connected!")
 
-    s.send(b"PC Connected\n")
+    s.send(b" ====== \n")
     data = s.recv(1024)
     print("Received:", data)
 
