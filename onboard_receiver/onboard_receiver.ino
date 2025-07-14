@@ -2,7 +2,7 @@
 #include <WiFiNINA.h>
 #include "motor_control.h"
 
-char ssid[] = "Nano1_AP";
+char ssid[] = "Nano_[YOUR_NAME]_AP";
 char pass[] = "nano1pwd";
 
 int status = WL_IDLE_STATUS;
