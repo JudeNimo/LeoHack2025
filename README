@@ -24,9 +24,9 @@ If you're new to Arduino (then you're in for a treat!), follow this link for a b
 VS Code is a very popular developer software for all types of languages. If you already have an IDE ready, feel free to use it. If not, download VS Code from here: https://code.visualstudio.com/download.
 
 Next, we need to install python and its dependencies (python add-ons), for this, we will use uv, which is a very versatile dependency manager. Open terminal in VS-Code and run the following line:
-'''
+```
 powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
-'''
+```
 
 
 
