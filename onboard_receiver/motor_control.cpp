@@ -145,6 +145,7 @@ void turn_right(int power, int time){
   // digitalWrite(Mot2_hbridge_2, LOW);
   // digitalWrite(Mot3_hbridge_1, LOW);
   // digitalWrite(Mot3_hbridge_2, LOW);
+
 }
 
 void translate_right(int power, int time){

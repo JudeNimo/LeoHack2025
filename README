@@ -1,0 +1,62 @@
+# Introduction
+
+This repository holds the basic code for interfacing with the Active Satellite Robot (ASR) from your laptop. It is there to serve a baseline for you to connect to the Arduino and control the motors of the robot. The repo will be updated throughout the week if new features are introduced or bugs are fixed.
+
+## System overview
+
+The robot's onboard computer (the Arduino Nano IOT) is a microcontroller running on C++ compiled code. It has a WiFi/Bluetooth module on it and that's what is used to connect to it. The Nano creates its own network to which the ground station (laptop running python is connected). The python script on the laptop then takes button presses from the user and transmits them as single characters which the Arduino then receives and triggers the corresponding functions.
+
+# Installation Instructions
+
+## Software Download
+
+To edit, compile and run the code you will need two IDE environments. (In theory we could do only one, but it'll be easier if we use two separate ones).
+- Arduino IDE
+- VSCode (or any other python IDE like Spyder)
+
+### Arduino IDE
+
+To download Arduino IDE, use this link: https://www.arduino.cc/en/software/
+If you're new to Arduino (then you're in for a treat!), follow this link for a basic getting-started guide: https://docs.arduino.cc/software/ide-v2/tutorials/getting-started-ide-v2/
+
+Go to Tools/Manage Libraries and download *WiFiNINA* library.
+
+### VS Code
+
+VS Code is a very popular developer software for all types of languages. If you already have an IDE ready, feel free to use it. If not, download VS Code from here: https://code.visualstudio.com/download.
+
+Next, we need to install python and its dependencies (python add-ons). The exact steps will differ based on your operating system so please follow the steps outlined on this page to install python, and a python VS Code extension: https://code.visualstudio.com/docs/python/python-tutorial#_prerequisites
+
+## Downloading the code
+
+### No Git-Hub (Quick-Start)
+
+For quick-start, just download the repo from this webpage (top right button). Save it and start working in it!
+
+### Using Git (Better Long-Term)
+
+Coming soon
+
+# Running the code
+
+## Arduino IDE
+
+The robot's onboard computer runs on 'onboard_receiver.ino' code which uses the surrounding files in the 'onboard_receiver' folder. Open it with Arduino IDE. Towards the top, you will see:
+```
+char ssid[] = "Nano_[YOUR_NAME]_AP";
+char pass[] = "nano1pwd";
+```
+This will be the name of your Nano's WiFi. Change the ssid so it includes your name in it, also change the password to something you prefer (8 characters minimum). Plug in the board and hit the 'upload' button to upload the code. It should start running straight away!
+
+## Python Script
+
+First, connect your laptop to the WiFi network created by your nano. Then, run the 'remote_control.py' file to start up the controller. If everything works, it should connect to your Arduino in a few seconds. Then you can use the following buttons to control the robot:
+w -> go foward
+s -> go backwards
+q -> rotate left
+e -> rotate right
+
+And voilla! You are controlling the robot. Now you can make your own modifications to it :) 
+
+
+
