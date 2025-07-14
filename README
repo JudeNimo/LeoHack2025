@@ -60,6 +60,13 @@ And voilla! You are controlling the robot. Now you can make your own modificatio
 
 # Breakout Board Pinout
 
-Black -> GND 
+Black -> GND (3A max)
+Red -> +5V (3A max)
+Yellow -> D9 (PWM/White-Blue Cable)
+Orange -> D11 (PWM/White-Orange Cable)
+Brown -> D12 (PWM/White-Brown Cable)
+White -> A0 (Anaolgue/White-Green Cable)
+Grey -> A1 (Analogue/Blue Cable)
+Purple -> A2 (Analogue/Green Cable)
 
 
