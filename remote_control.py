@@ -63,16 +63,5 @@ try:
 
     s.close()
 
-    # s.send(b" ====== \n")
-    # data = s.recv(1024)
-    # print("Received:", data)
-
-    # while True:
-    #     msg = input("Send to Arduino: ")
-    #     s.send(msg.encode())
-    #     # delay = timedelta(seconds=0.5)
-    #     # print("Reply:", s.recv(1024))
-
-
 except Exception as e:
     print("Connection failed:", e)
