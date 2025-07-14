@@ -19,6 +19,8 @@ To edit, compile and run the code you will need two IDE environments. (In theory
 To download Arduino IDE, use this link: https://www.arduino.cc/en/software/
 If you're new to Arduino (then you're in for a treat!), follow this link for a basic getting-started guide: https://docs.arduino.cc/software/ide-v2/tutorials/getting-started-ide-v2/
 
+Go to Tools/Manage Libraries and download *WiFiNINA* library.
+
 ### VS Code
 
 VS Code is a very popular developer software for all types of languages. If you already have an IDE ready, feel free to use it. If not, download VS Code from here: https://code.visualstudio.com/download.
