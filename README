@@ -14,4 +14,19 @@ To edit, compile and run the code you will need two IDE environments. (In theory
 - Arduino IDE
 - VSCode (or any other python IDE like Spyder)
 
+### Arduino IDE
+
+To download Arduino IDE, use this link: https://www.arduino.cc/en/software/
+If you're new to Arduino (then you're in for a treat!), follow this link for a basic getting-started guide: https://docs.arduino.cc/software/ide-v2/tutorials/getting-started-ide-v2/
+
+### VS Code
+
+VS Code is a very popular developer software for all types of languages. If you already have an IDE ready, feel free to use it. If not, download VS Code from here: https://code.visualstudio.com/download.
+
+Next, we need to install python and its dependencies (python add-ons), for this, we will use uv, which is a very versatile dependency manager. Open terminal in VS-Code and run the following line:
+'''
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+'''
+
+
 
