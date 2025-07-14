@@ -1,6 +1,7 @@
 #include <SPI.h>
 #include <WiFiNINA.h>
 #include "motor_control.h"
+#include "student_functions.h"
 
 char ssid[] = "Nano_[YOUR_NAME]_AP";
 char pass[] = "nano1pwd";

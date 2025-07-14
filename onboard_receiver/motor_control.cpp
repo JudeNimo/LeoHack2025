@@ -10,7 +10,7 @@ const int Mot2_hbridge_1 = 6;
 const int Mot2_hbridge_2 = 7;
 const int Mot3_pwm = 10;
 const int Mot3_hbridge_1 = 8;
-const int Mot3_hbridge_2 = 9;
+const int Mot3_hbridge_2 = 13;
 
 int global_max_speed = 200; //maximum speed which the pwoer will be normalised to
 int time_normaliser = 500; //same here, value is in miliseconds
