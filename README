@@ -58,5 +58,8 @@ e -> rotate right
 
 And voilla! You are controlling the robot. Now you can make your own modifications to it :) 
 
+# Breakout Board Pinout
+
+Black -> GND 
 
 
