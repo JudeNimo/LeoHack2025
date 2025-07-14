@@ -1,0 +1,17 @@
+# Introduction
+
+This repository holds the basic code for interfacing with the Active Satellite Robot (ASR) from your laptop. It is there to serve a baseline for you to connect to the Arduino and control the motors of the robot. The repo will be updated throughout the week if new features are introduced or bugs are fixed.
+
+## System overview
+
+The robot's onboard computer (the Arduino Nano IOT) is a microcontroller running on C++ compiled code. It has a WiFi/Bluetooth module on it and that's what is used to connect to it. The Nano creates its own network to which the ground station (laptop running python is connected). The python script on the laptop then takes button presses from the user and transmits them as single characters which the Arduino then receives and triggers the corresponding functions.
+
+# Installation Instructions
+
+## Software Download
+
+To edit, compile and run the code you will need two IDE environments. (In theory we could do only one, but it'll be easier if we use two separate ones).
+- Arduino IDE
+- VSCode (or any other python IDE like Spyder)
+
+
