@@ -45,15 +45,15 @@ void go_forward(int power, int time) {
   analogWrite(Mot2_pwm, desired_speed);
   analogWrite(Mot3_pwm, desired_speed);
 
-  delay(time * time_normaliser);
+  // delay(time * time_normaliser);
 
-  analogWrite(Mot2_pwm, 0);
-  analogWrite(Mot3_pwm, 0);
+  // analogWrite(Mot2_pwm, 0);
+  // analogWrite(Mot3_pwm, 0);
 
-  digitalWrite(Mot2_hbridge_1, LOW);
-  digitalWrite(Mot2_hbridge_2, LOW);
-  digitalWrite(Mot3_hbridge_1, LOW);
-  digitalWrite(Mot3_hbridge_2, LOW);
+  // digitalWrite(Mot2_hbridge_1, LOW);
+  // digitalWrite(Mot2_hbridge_2, LOW);
+  // digitalWrite(Mot3_hbridge_1, LOW);
+  // digitalWrite(Mot3_hbridge_2, LOW);
 }
 
 void stop(){
@@ -80,15 +80,15 @@ void go_backward(int power, int time) {
   analogWrite(Mot2_pwm, desired_speed);
   analogWrite(Mot3_pwm, desired_speed);
 
-  delay(time * time_normaliser);
+  // delay(time * time_normaliser);
 
-  analogWrite(Mot2_pwm, 0);
-  analogWrite(Mot3_pwm, 0);
+  // analogWrite(Mot2_pwm, 0);
+  // analogWrite(Mot3_pwm, 0);
 
-  digitalWrite(Mot2_hbridge_1, LOW);
-  digitalWrite(Mot2_hbridge_2, LOW);
-  digitalWrite(Mot3_hbridge_1, LOW);
-  digitalWrite(Mot3_hbridge_2, LOW);
+  // digitalWrite(Mot2_hbridge_1, LOW);
+  // digitalWrite(Mot2_hbridge_2, LOW);
+  // digitalWrite(Mot3_hbridge_1, LOW);
+  // digitalWrite(Mot3_hbridge_2, LOW);
 }
 
 void turn_left(int power, int time){
@@ -105,18 +105,18 @@ void turn_left(int power, int time){
   analogWrite(Mot2_pwm, desired_speed);
   analogWrite(Mot3_pwm, desired_speed);
 
-  delay(time * time_normaliser);
+  // delay(time * time_normaliser);
 
-  analogWrite(Mot1_pwm, 0);
-  analogWrite(Mot2_pwm, 0);
-  analogWrite(Mot3_pwm, 0);
+  // analogWrite(Mot1_pwm, 0);
+  // analogWrite(Mot2_pwm, 0);
+  // analogWrite(Mot3_pwm, 0);
 
-  digitalWrite(Mot1_hbridge_1, LOW);
-  digitalWrite(Mot1_hbridge_2, LOW);
-  digitalWrite(Mot2_hbridge_1, LOW);
-  digitalWrite(Mot2_hbridge_2, LOW);
-  digitalWrite(Mot3_hbridge_1, LOW);
-  digitalWrite(Mot3_hbridge_2, LOW);
+  // digitalWrite(Mot1_hbridge_1, LOW);
+  // digitalWrite(Mot1_hbridge_2, LOW);
+  // digitalWrite(Mot2_hbridge_1, LOW);
+  // digitalWrite(Mot2_hbridge_2, LOW);
+  // digitalWrite(Mot3_hbridge_1, LOW);
+  // digitalWrite(Mot3_hbridge_2, LOW);
 }
 
 void turn_right(int power, int time){
@@ -133,18 +133,19 @@ void turn_right(int power, int time){
   analogWrite(Mot2_pwm, desired_speed);
   analogWrite(Mot3_pwm, desired_speed);
 
-  delay(time * time_normaliser);
+  // delay(time * time_normaliser);
 
-  analogWrite(Mot1_pwm, 0);
-  analogWrite(Mot2_pwm, 0);
-  analogWrite(Mot3_pwm, 0);
+  // analogWrite(Mot1_pwm, 0);
+  // analogWrite(Mot2_pwm, 0);
+  // analogWrite(Mot3_pwm, 0);
 
-  digitalWrite(Mot1_hbridge_1, LOW);
-  digitalWrite(Mot1_hbridge_2, LOW);
-  digitalWrite(Mot2_hbridge_1, LOW);
-  digitalWrite(Mot2_hbridge_2, LOW);
-  digitalWrite(Mot3_hbridge_1, LOW);
-  digitalWrite(Mot3_hbridge_2, LOW);
+  // digitalWrite(Mot1_hbridge_1, LOW);
+  // digitalWrite(Mot1_hbridge_2, LOW);
+  // digitalWrite(Mot2_hbridge_1, LOW);
+  // digitalWrite(Mot2_hbridge_2, LOW);
+  // digitalWrite(Mot3_hbridge_1, LOW);
+  // digitalWrite(Mot3_hbridge_2, LOW);
+
 }
 
 void translate_right(int power, int time){
@@ -161,18 +162,18 @@ void translate_right(int power, int time){
   analogWrite(Mot2_pwm, desired_speed/2);
   analogWrite(Mot3_pwm, desired_speed/2);
 
-  delay(time * time_normaliser);
+  // delay(time * time_normaliser);
 
-  analogWrite(Mot1_pwm, 0);
-  analogWrite(Mot2_pwm, 0);
-  analogWrite(Mot3_pwm, 0);
+  // analogWrite(Mot1_pwm, 0);
+  // analogWrite(Mot2_pwm, 0);
+  // analogWrite(Mot3_pwm, 0);
 
-  digitalWrite(Mot1_hbridge_1, LOW);
-  digitalWrite(Mot1_hbridge_2, LOW);
-  digitalWrite(Mot2_hbridge_1, LOW);
-  digitalWrite(Mot2_hbridge_2, LOW);
-  digitalWrite(Mot3_hbridge_1, LOW);
-  digitalWrite(Mot3_hbridge_2, LOW);
+  // digitalWrite(Mot1_hbridge_1, LOW);
+  // digitalWrite(Mot1_hbridge_2, LOW);
+  // digitalWrite(Mot2_hbridge_1, LOW);
+  // digitalWrite(Mot2_hbridge_2, LOW);
+  // digitalWrite(Mot3_hbridge_1, LOW);
+  // digitalWrite(Mot3_hbridge_2, LOW);
 }
 
 void translate_left(int power, int time){
@@ -189,16 +190,16 @@ void translate_left(int power, int time){
   analogWrite(Mot2_pwm, desired_speed/2);
   analogWrite(Mot3_pwm, desired_speed/2);
 
-  delay(time * time_normaliser);
+  // delay(time * time_normaliser);
 
-  analogWrite(Mot1_pwm, 0);
-  analogWrite(Mot2_pwm, 0);
-  analogWrite(Mot3_pwm, 0);
+  // analogWrite(Mot1_pwm, 0);
+  // analogWrite(Mot2_pwm, 0);
+  // analogWrite(Mot3_pwm, 0);
 
-  digitalWrite(Mot1_hbridge_1, LOW);
-  digitalWrite(Mot1_hbridge_2, LOW);
-  digitalWrite(Mot2_hbridge_1, LOW);
-  digitalWrite(Mot2_hbridge_2, LOW);
-  digitalWrite(Mot3_hbridge_1, LOW);
-  digitalWrite(Mot3_hbridge_2, LOW);
+  // digitalWrite(Mot1_hbridge_1, LOW);
+  // digitalWrite(Mot1_hbridge_2, LOW);
+  // digitalWrite(Mot2_hbridge_1, LOW);
+  // digitalWrite(Mot2_hbridge_2, LOW);
+  // digitalWrite(Mot3_hbridge_1, LOW);
+  // digitalWrite(Mot3_hbridge_2, LOW);
 }
