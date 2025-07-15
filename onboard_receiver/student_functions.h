@@ -2,6 +2,8 @@
 #define STUDENT_FUNCTIONS_H
 
 //put your function headings here
-void function1();
+void servo_init();
+void servo_open();
+void servo_close();
 
 #endif

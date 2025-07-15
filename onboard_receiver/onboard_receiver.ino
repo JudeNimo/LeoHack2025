@@ -1,5 +1,6 @@
 #include <SPI.h>
 #include <WiFiNINA.h>
+#include <Servo.h>
 #include "motor_control.h"
 #include "student_functions.h"
 
@@ -12,7 +13,6 @@ WiFiServer server(8080);  // TCP server on port 8080
 
 void setup() { 
   Serial.begin(9600); //initialising serial connection
-  //while (!Serial);
 
   Serial.println("Creating an access point...");
 
@@ -29,6 +29,7 @@ void setup() {
   Serial.println(ip);
 
   server.begin();
+  servo_init();
 
   motor_init();
 }
@@ -174,6 +175,16 @@ void loop() {
           int ipower = power - '0';
 
           translate_right(ipower, itime);
+        }
+
+        // === SAMPLE SERVO CONTROL ===
+        if (c == 'o') {
+          servo_open();
+          Serial.println("O function triggered");
+        }
+        if (c == 'p') {
+          servo_close();
+          Serial.println("P function triggered");
         }
 
         client.write(c);         // Echo back to client
