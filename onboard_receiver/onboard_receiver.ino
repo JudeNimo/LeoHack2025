@@ -13,7 +13,6 @@ WiFiServer server(8080);  // TCP server on port 8080
 
 void setup() { 
   Serial.begin(9600); //initialising serial connection
-  //while (!Serial);
 
   Serial.println("Creating an access point...");
 
