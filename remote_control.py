@@ -18,6 +18,8 @@ key_to_command = {
     'd': f'd {power} {duration}', #right
     'q': f'l {power} {duration}', #left turn
     'e': f'r {power} {duration}', #right turn
+    'o': 'o', #servo open
+    'p': 'p', #servo close
 }
 
 #Keep track of pressed keye to avoid flooding commands

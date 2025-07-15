@@ -1,5 +1,6 @@
 #include <SPI.h>
 #include <WiFiNINA.h>
+#include <Servo.h>
 #include "motor_control.h"
 #include "student_functions.h"
 
@@ -29,6 +30,7 @@ void setup() {
   Serial.println(ip);
 
   server.begin();
+  servo_init();
 
   motor_init();
 }
@@ -174,6 +176,16 @@ void loop() {
           int ipower = power - '0';
 
           translate_right(ipower, itime);
+        }
+
+        // === SAMPLE SERVO CONTROL ===
+        if (c == 'o') {
+          servo_open();
+          Serial.println("O function triggered");
+        }
+        if (c == 'p') {
+          servo_close();
+          Serial.println("P function triggered");
         }
 
         client.write(c);         // Echo back to client
