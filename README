@@ -69,4 +69,6 @@ White -> A0 (Anaolgue/White-Green Cable)
 Grey -> A1 (Analogue/Blue Cable)
 Purple -> A2 (Analogue/Green Cable)
 
+# QR Code Demonstration
 
+The QR_demo showcases, local QR code detection on the ESP32‑CAM using the quirc library. It captures grayscale images at QVGA resolution and processes them in real time without relying on external servers or Wi-Fi. The implementation runs the QR decoding in a separate FreeRTOS task with minimal frame delay. It provides QR code data, position, and approximate size via serial output back to the host PC, serving as a lightweight reference project for students learning about embedded computer vision and ESP32‑CAM programming.
