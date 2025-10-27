@@ -4,7 +4,7 @@ This repository holds the basic code for interfacing with the Active Satellite R
 
 ## System overview
 
-The robot's onboard computer (the Arduino Nano IOT) is a microcontroller running on C++ compiled code. It has a WiFi/Bluetooth module on it and that's what is used to connect to it. The Nano creates its own network to which the ground station (laptop running python is connected). The python script on the laptop then takes button presses from the user and transmits them as single characters which the Arduino then receives and triggers the corresponding functions.
+The robot's onboard computer (the Arduino Nano IOT) is a microcontroller running on C++ compiled code. It has a WiFi/Bluetooth module on it and that's what is used to connect to it. The Nano creates its own network to which the ground station (laptop running python) is connected. The python script on the laptop then takes button presses from the user and transmits them as single characters which the Arduino then receives and triggers the corresponding functions.
 
 # Installation Instructions
 
