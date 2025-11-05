@@ -1,6 +1,6 @@
 # Introduction
 
-This repository holds the basic code for interfacing with the Active Satellite Robot (ASR) from your laptop. It is there to serve a baseline for you to connect to the Arduino and control the motors of the robot. The repo will be updated throughout the week if new features are introduced or bugs are fixed.
+This repository holds the basic code for interfacing with the Active Satellite Robot (ASR) from your laptop. It is there to serve a baseline for you to connect to the Arduino and control the motors of the robot.
 
 ## System overview
 
@@ -25,17 +25,12 @@ Go to Tools/Manage Libraries and download *WiFiNINA* library.
 
 VS Code is a very popular developer software for all types of languages. If you already have an IDE ready, feel free to use it. If not, download VS Code from here: https://code.visualstudio.com/download.
 
-Next, we need to install python and its dependencies (python add-ons). The exact steps will differ based on your operating system so please follow the steps outlined on this page to install python, and a python VS Code extension: https://code.visualstudio.com/docs/python/python-tutorial#_prerequisites
+Next, you will need to install python and its dependencies (python add-ons). The exact steps will differ based on your operating system so please follow the steps outlined on this page to install python, and a python VS Code extension: https://code.visualstudio.com/docs/python/python-tutorial#_prerequisites
 
 ## Downloading the code
 
-### No Git-Hub (Quick-Start)
+For quick-start, just download the repo from this webpage (top right button). Save it and start working in it. However it is recommended you fork this repository into your private GitHub (or equivalent) repository and work there. It is also totally fine if you don't want to use this code at all and start something from scratch.
 
-For quick-start, just download the repo from this webpage (top right button). Save it and start working in it!
-
-### Using Git (Better Long-Term)
-
-Coming soon
 
 # Running the code
 
@@ -68,7 +63,3 @@ And voilla! You are controlling the robot. Now you can make your own modificatio
 - White -> A0 (Anaolgue/White-Green Cable)
 - Grey -> +3.3V (150 mA max/Blue Cable)
 - Purple -> A2 (Analogue/Green Cable)
-
-# QR Code Demonstration
-
-The QR_demo showcases, local QR code detection on the ESP32‑CAM using the quirc library. It captures grayscale images at QVGA resolution and processes them in real time without relying on external servers or Wi-Fi. The implementation runs the QR decoding in a separate FreeRTOS task with minimal frame delay. It provides QR code data, position, and approximate size via serial output back to the host PC, serving as a lightweight reference project for students learning about embedded computer vision and ESP32‑CAM programming.
