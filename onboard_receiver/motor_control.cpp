@@ -130,3 +130,108 @@ void translate_left(int power, int time){
   analogWrite(Mot2_pwm, desired_speed/2);
   analogWrite(Mot3_pwm, desired_speed/2);
 }
+
+// Smooth movement functions for proportional control
+void move_forward_smooth(int speed) {
+  int desired_speed = (speed * global_max_speed) / 9;
+  if (desired_speed < 0) desired_speed = 0;
+  if (desired_speed > global_max_speed) desired_speed = global_max_speed;
+
+  digitalWrite(Mot2_hbridge_1, LOW);
+  digitalWrite(Mot2_hbridge_2, HIGH);
+  digitalWrite(Mot3_hbridge_1, HIGH);
+  digitalWrite(Mot3_hbridge_2, LOW);
+
+  analogWrite(Mot2_pwm, desired_speed);
+  analogWrite(Mot3_pwm, desired_speed);
+}
+
+void move_backward_smooth(int speed) {
+  int desired_speed = (speed * global_max_speed) / 9;
+  if (desired_speed < 0) desired_speed = 0;
+  if (desired_speed > global_max_speed) desired_speed = global_max_speed;
+
+  digitalWrite(Mot2_hbridge_1, HIGH);
+  digitalWrite(Mot2_hbridge_2, LOW);
+  digitalWrite(Mot3_hbridge_1, LOW);
+  digitalWrite(Mot3_hbridge_2, HIGH);
+
+  analogWrite(Mot2_pwm, desired_speed);
+  analogWrite(Mot3_pwm, desired_speed);
+}
+
+void rotate_smooth(int speed) {
+  // Positive speed = rotate right, negative = rotate left
+  int desired_speed = (abs(speed) * global_max_speed) / 9;
+  if (desired_speed > global_max_speed) desired_speed = global_max_speed;
+
+  if (speed > 0) {
+    // Rotate right
+    digitalWrite(Mot1_hbridge_1, HIGH);
+    digitalWrite(Mot1_hbridge_2, LOW);
+    digitalWrite(Mot2_hbridge_1, LOW);
+    digitalWrite(Mot2_hbridge_2, HIGH);
+    digitalWrite(Mot3_hbridge_1, LOW);
+    digitalWrite(Mot3_hbridge_2, HIGH);
+  } else {
+    // Rotate left
+    digitalWrite(Mot1_hbridge_1, LOW);
+    digitalWrite(Mot1_hbridge_2, HIGH);
+    digitalWrite(Mot2_hbridge_1, HIGH);
+    digitalWrite(Mot2_hbridge_2, LOW);
+    digitalWrite(Mot3_hbridge_1, HIGH);
+    digitalWrite(Mot3_hbridge_2, LOW);
+  }
+
+  analogWrite(Mot1_pwm, desired_speed);
+  analogWrite(Mot2_pwm, desired_speed);
+  analogWrite(Mot3_pwm, desired_speed);
+}
+
+void translate_smooth(int speed) {
+  // Positive speed = translate right, negative = translate left
+  int desired_speed = (abs(speed) * global_max_speed) / 9;
+  if (desired_speed > global_max_speed) desired_speed = global_max_speed;
+
+  if (speed > 0) {
+    // Translate right
+    digitalWrite(Mot1_hbridge_1, LOW);
+    digitalWrite(Mot1_hbridge_2, HIGH);
+    digitalWrite(Mot2_hbridge_1, LOW);
+    digitalWrite(Mot2_hbridge_2, HIGH);
+    digitalWrite(Mot3_hbridge_1, LOW);
+    digitalWrite(Mot3_hbridge_2, HIGH);
+  } else {
+    // Translate left
+    digitalWrite(Mot1_hbridge_1, HIGH);
+    digitalWrite(Mot1_hbridge_2, LOW);
+    digitalWrite(Mot2_hbridge_1, HIGH);
+    digitalWrite(Mot2_hbridge_2, LOW);
+    digitalWrite(Mot3_hbridge_1, HIGH);
+    digitalWrite(Mot3_hbridge_2, LOW);
+  }
+
+  analogWrite(Mot1_pwm, desired_speed);
+  analogWrite(Mot2_pwm, desired_speed / 2);
+  analogWrite(Mot3_pwm, desired_speed / 2);
+}
+
+void apply_motor_control(int forward, int rotation, int translate) {
+  // Apply combined motor control based on forward, rotation, and translation components
+  // This is a simplified version - for more complex control, you'd need to combine vectors
+  
+  // Priority: rotation > translation > forward
+  if (abs(rotation) > 1) {
+    rotate_smooth(rotation);
+  } else if (abs(translate) > 1) {
+    translate_smooth(translate);
+  } else if (abs(forward) > 1) {
+    if (forward > 0) {
+      move_forward_smooth(forward);
+    } else {
+      move_backward_smooth(-forward);
+    }
+  } else {
+    stop();
+  }
+}
