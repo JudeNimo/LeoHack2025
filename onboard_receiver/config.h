@@ -38,8 +38,10 @@
 #define QR_SIDE_LEFT "LEFT"         // Left side QR code
 #define QR_SIDE_RIGHT "RIGHT"       // Right side QR code
 
-// Serial Communication
-#define SERIAL1_BAUD 115200         // Baud rate for ESP32-CAM communication
+// WiFi Communication
+#define ESP32CAM_PORT 8081          // Port for ESP32-CAM QR data communication
+#define ARDUINO_AP_SSID "Nano_OrbitalCleaners_AP"  // Arduino WiFi AP name (must match)
+#define ARDUINO_AP_PASSWORD "orbitalcleaner"         // Arduino WiFi AP password (must match)
 
 #endif
 
