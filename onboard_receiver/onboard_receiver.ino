@@ -4,8 +4,8 @@
 #include "motor_control.h"
 #include "student_functions.h"
 
-char ssid[] = "Nano_[YOUR_NAME]_AP";
-char pass[] = "nano1pwd";
+char ssid[] = "Nano_OrbitalCleaners_AP";
+char pass[] = "orbital";
 
 int status = WL_IDLE_STATUS;
 WiFiServer server(8080);  // TCP server on port 8080
