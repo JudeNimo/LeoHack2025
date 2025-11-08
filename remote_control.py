@@ -20,7 +20,11 @@ key_to_command = {
     'e': f'r {power} {duration}', #right turn
     'o': 'o', #servo open
     'p': 'p', #servo close
+    'm': 'm', #toggle autonomous mode
 }
+
+# Toggle commands that should only send once (not continuously)
+toggle_commands = {'o', 'p', 'm'}
 
 #Keep track of pressed keye to avoid flooding commands
 pressed_keys = set()
@@ -33,7 +37,21 @@ try:
     s.settimeout(5)
     s.connect((ARUINO_IP, ARUINO_PORT))
     print("Connected!")
-    print("Hold WASD/QE to move. Release to stop. Press ESC to exit.")
+    print("\n=== MANUAL CONTROL MODE ===")
+    print("Movement Controls:")
+    print("  W - Forward")
+    print("  S - Backward")
+    print("  A - Translate Left")
+    print("  D - Translate Right")
+    print("  Q - Rotate Left")
+    print("  E - Rotate Right")
+    print("  O - Servo Open")
+    print("  P - Servo Close")
+    print("  M - Toggle Autonomous Mode")
+    print("  S (when held) - Stop")
+    print("  ESC - Exit program")
+    print("\nHold keys to move. Release to stop.")
+    print("Press 'm' to toggle autonomous docking mode.\n")
 
     while True:
         # Check for pressed keys
@@ -43,13 +61,20 @@ try:
                 cmd = key_to_command[key]
                 print(f"Sending command: {cmd}")
                 s.send(cmd.encode())
+                # For toggle commands, remove immediately so they can be pressed again
+                if key in toggle_commands:
+                    # Small delay to ensure command is sent
+                    time.sleep(0.1)
+                    pressed_keys.remove(key)
 
-        # Check for released keyswsqeswswswqeqqeeqqwwsewww
+        # Check for released keys
         keys_to_remove = []
         for key in list(pressed_keys):
             if not keyboard.is_pressed(key):
                 print(f"Key released: {key}")
-                s.send(stop_command.encode())
+                # Only send stop command for movement keys, not toggle commands
+                if key not in toggle_commands:
+                    s.send(stop_command.encode())
                 keys_to_remove.append(key)
                 
         #remove released keys from the set

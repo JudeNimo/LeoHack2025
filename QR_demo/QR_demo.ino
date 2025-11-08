@@ -115,8 +115,17 @@ void qrTask(void*)
         cx>>=2; cy>>=2;
         int w=dist(code.corners[0].x,code.corners[0].y,
                    code.corners[1].x,code.corners[1].y);
-        Serial.printf("QR,%.*s,%d,%d,%d\n",
-                      data.payload_len,data.payload,cx,cy,w);
+        int h=dist(code.corners[1].x,code.corners[1].y,
+                   code.corners[2].x,code.corners[2].y);
+        
+        // Output structured format: QR:<id>,<cx>,<cy>,<width>,<height>\n
+        // Extract QR code ID from payload (first part before comma, or entire payload)
+        Serial.print("QR:");
+        // Print payload as ID (will be parsed on Arduino side)
+        for(int j=0; j<data.payload_len; j++) {
+          Serial.print((char)data.payload[j]);
+        }
+        Serial.printf(",%d,%d,%d,%d\n", cx, cy, w, h);
       }
       taskYIELD();                        // feed watchdog
     }
