@@ -59,7 +59,7 @@ static camera_config_t cam_cfg = {
 const char* ssid = "Nano_OrbitalCleaners_AP";  // Match Arduino's AP name
 const char* password = "orbitalcleaner";          // Match Arduino's AP password
 const char* arduino_ip = "192.168.4.1";    // Arduino's IP address
-const int arduino_port = 8081;              // Port for QR data (different from control port 8080)
+const int arduino_port = 8080;              // Port for QR data (different from control port 8080) (change back to 8081 later)
 
 // ────────── Globals ──────────
 static struct quirc *qr = nullptr;
