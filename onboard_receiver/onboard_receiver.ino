@@ -3,16 +3,26 @@
 #include <Servo.h>
 #include "motor_control.h"
 #include "student_functions.h"
+#include "navigation.h"
+#include "config.h"
 
 char ssid[] = "Nano_OrbitalCleaners_AP";
-char pass[] = "orbital";
+char pass[] = "orbitalcleaner";
 
 int status = WL_IDLE_STATUS;
-WiFiServer server(8080);  // TCP server on port 8080
+WiFiServer server(8080);  // TCP server on port 8080 for laptop control
+WiFiServer esp32cam_server(8081);  // TCP server on port 8081 for ESP32-CAM
 
+// Autonomous navigation mode
+bool autonomous_mode = false;  // Set to true to enable autonomous docking
+String qr_data_buffer = "";    // Buffer for reading QR data from ESP32-CAM
+WiFiClient esp32cam_client;   // Client connection from ESP32-CAM
+
+// Forward declaration
+void read_esp32cam_data();
 
 void setup() { 
-  Serial.begin(9600); //initialising serial connection
+  Serial.begin(9600); //initialising serial connection for debugging
 
   Serial.println("Creating an access point...");
 
@@ -28,13 +38,39 @@ void setup() {
   Serial.print("AP IP Address: ");
   Serial.println(ip);
 
-  server.begin();
+  server.begin();           // Port 8080 for laptop control
+  esp32cam_server.begin(); // Port 8081 for ESP32-CAM
+  
+  Serial.println("WiFi servers started:");
+  Serial.println("  Port 8080: Laptop control");
+  Serial.println("  Port 8081: ESP32-CAM QR data");
+  
   servo_init();
 
   motor_init();
+  navigation_init();
+  
+  Serial.println("System initialized. Press 'm' to toggle autonomous mode.");
+  Serial.println("Autonomous mode: OFF");
 }
 
 void loop() {
+  // Check for ESP32-CAM connection
+  if (!esp32cam_client || !esp32cam_client.connected()) {
+    esp32cam_client = esp32cam_server.available();
+    if (esp32cam_client) {
+      Serial.println("ESP32-CAM connected!");
+    }
+  }
+  
+  // Read data from ESP32-CAM via WiFi
+  read_esp32cam_data();
+  
+  // Update navigation if in autonomous mode
+  if (autonomous_mode) {
+    navigation_update();
+  }
+  
   WiFiClient client = server.available(); // Listen for incoming clients
 
   if (client) {
@@ -43,6 +79,26 @@ void loop() {
       if (client.available()) {
         char c = client.read();
         Serial.write(c);         // Print to serial monitor
+
+        // Toggle autonomous mode
+        if (c == 'm') {
+          autonomous_mode = !autonomous_mode;
+          if (autonomous_mode) {
+            Serial.println("Autonomous mode: ON");
+            navigation_init();
+          } else {
+            Serial.println("Autonomous mode: OFF");
+            stop();
+          }
+          client.write(c); // Echo back
+          continue;
+        }
+        
+        // If in autonomous mode, ignore manual commands (except 'm' and 's')
+        if (autonomous_mode && c != 's') {
+          client.write(c); // Echo back
+          continue;
+        }
 
         //checking if one of standard commands
         if (c == 's') {
@@ -192,5 +248,32 @@ void loop() {
     }
     client.stop();
     Serial.println("Client disconnected.");
+  }
+}
+
+// Function to read and process WiFi data from ESP32-CAM
+void read_esp32cam_data() {
+  if (!esp32cam_client || !esp32cam_client.connected()) {
+    return;
+  }
+  
+  while (esp32cam_client.available()) {
+    char c = esp32cam_client.read();
+    
+    if (c == '\n') {
+      // End of line, process the buffer
+      if (qr_data_buffer.length() > 0) {
+        process_qr_data(qr_data_buffer.c_str());
+        qr_data_buffer = "";
+      }
+    } else if (c >= 32 && c <= 126) {
+      // Printable character, add to buffer
+      qr_data_buffer += c;
+      
+      // Prevent buffer overflow
+      if (qr_data_buffer.length() > 128) {
+        qr_data_buffer = "";
+      }
+    }
   }
 }
